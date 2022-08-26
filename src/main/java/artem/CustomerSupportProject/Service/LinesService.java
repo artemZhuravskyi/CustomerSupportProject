@@ -25,7 +25,7 @@ public class LinesService {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
 
-    public List<Line> createQueriesFromString(String query) {
+    public List<Line> createLinesFromString(String query) {
         String[] lines = query.split(END_OF_LINE);
         return Arrays.stream(lines)
                 .skip(1)

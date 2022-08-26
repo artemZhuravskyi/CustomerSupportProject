@@ -18,6 +18,6 @@ public class Controller {
 
     @GetMapping("/calculate-average")
     public Response response(@RequestParam String data) {
-        return responsesService.calculateAverageWaitingTime(linesService.createQueriesFromString(data));
+        return responsesService.calculateAverageWaitingTime(linesService.createLinesFromString(data));
     }
 }
