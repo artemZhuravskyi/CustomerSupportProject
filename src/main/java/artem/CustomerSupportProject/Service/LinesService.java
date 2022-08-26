@@ -34,15 +34,15 @@ public class LinesService {
     }
 
     private QuestionField separateFields(String stringFields) {
-        QuestionField questionField = new QuestionField();
         String[] strings = new String[3];
         AtomicInteger index = new AtomicInteger();
         Arrays.stream(stringFields.split(DOT)).forEach(string -> strings[index.getAndIncrement()] = string);
 
-        questionField.setCategory(strings[0]);
-        questionField.setSubCategory(strings[1]);
-        questionField.setSubSubCategory(strings[2]);
-        return questionField;
+        return QuestionField.builder()
+                .category(strings[0])
+                .subCategory(strings[1])
+                .subSubCategory(strings[2])
+                .build();
     }
 
 
@@ -52,6 +52,7 @@ public class LinesService {
         QuestionField questionFields = separateFields(queryFields[2]);
         Line line;
         List<LocalDate> dates = separateDates(queryFields[4]);
+
         if (C_TYPE.equals(queryFields[0])) {
             line = new QueryLine();
             ((QueryLine) line).setMinutes(Integer.parseInt(queryFields[5]));
